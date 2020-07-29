@@ -1,8 +1,13 @@
-public class Hello {
-
-    public static void main(String[] args) {
-       System.out.println("Hello, World");
-        System.out.println("Triggering one new job from Pune");
+node{
+    stage('SCM Checkout'){
+        git 'https://github.com/TIPPU-cryp/jenkins.git'
     }
-
+    stage('Compile-Pakage'){
+        //Get maveen home path
+        def mvnHome = tool name : 'maven-3',type: 'maven'
+            sh "${mvnHome}//bin/mvn package"
+    }
+stage('Email Notification'){
+    
+}
 }
